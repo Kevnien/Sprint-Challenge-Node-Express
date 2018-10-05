@@ -48,9 +48,9 @@ router.put('/:id', (req, res)=>{
 router.delete('/:id', (req, res)=>{
     const {id} = req.params;
     db.remove(id)
-        .then(
-            res.status(200).json(`Deleted project with ID:${id}.`)
-        )
+        .then(project =>{
+            res.status(200).json(project);
+        })
         .catch(err => res.status(400).json(err));
 });
 
