@@ -19,6 +19,14 @@ router.get('/:id', (req, res)=>{
         .catch(err => res.status(400).json(err));
 });
 
+router.get('/get-project-actions/:id', (req, res)=>{
+    db.getProjectActions(req.params.id)
+        .then(projects =>{
+            res.status(200).json(projects);
+        })
+        .catch(err => res.status(400).json(err));
+})
+
 router.post('/', (req, res)=>{
     db.insert(req.body)
         .then(project =>{
